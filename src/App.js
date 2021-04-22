@@ -4,7 +4,7 @@ import "./App.css";
 import Coin from "./components/coinItem/Coin";
 function App() {
   const [coins, setCoins] = useState([]);
-
+  const [search, setSearch] = useState;
   useEffect(() => {
     axios
       .get(
@@ -17,6 +17,12 @@ function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filteredCoins = coins.filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase))
+
   return (
     <div>
       <div className="header">
@@ -27,12 +33,25 @@ function App() {
           <input
             className="inputField"
             type="text"
+            onChange={handleChange}
             placeholder="Search Currency"
           ></input>
         </form>
       </div>
       <div className="coinsContainer">
-        <Coin />
+        {filteredCoins.map((coin) => {
+          return(
+
+          <Coin
+          key={coin.id}
+          name={coin.name}
+          price={coin.cirrent_price}
+          symbol={coin.symbol}
+          marketcap={coin.market_cap}
+          volume={coin.total_volme}
+          image={coin.image}
+          priceChange={coin.price_percentage_24h}
+        />
       </div>
     </div>
   );

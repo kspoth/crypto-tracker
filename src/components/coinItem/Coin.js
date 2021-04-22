@@ -1,6 +1,14 @@
 import React from "react";
 
-const Coin = () => {
+const Coin = ({
+  name,
+  price,
+  symbol,
+  marketcap,
+  volume,
+  image,
+  priceChange,
+}) => {
   return (
     <div className="cryptoCoin">
       <img
