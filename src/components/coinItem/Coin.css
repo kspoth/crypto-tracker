@@ -5,7 +5,8 @@
     position: relative;
     width: 320px;
     margin: 2rem;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.5);
+    background-color: grey;
+    box-shadow: 0 3px 3px rgba(248, 247, 247, 0.5);
 }
 
 .coinLogo {
@@ -14,6 +15,7 @@
     height: 40px;
     width: 40px;
     clip-path: circle(60px at center);
+    background-color: transparent;
 }
 
 .coinNameWrap {
@@ -22,11 +24,13 @@
     align-items: center;
     padding: 4px;
     font-weight: 700;
+    background-color: transparent;
 }
 
 .coinName {
     font-weight: bold;
     font-size: 1.5rem;
+    background-color: transparent;
 }
 
 .coinSymbol {
@@ -34,6 +38,7 @@
     font-size: 12px;
     font-weight: 500;
     padding-left: 8px;
+    background-color: transparent;
 }
 
 .priceContainerUP {
