@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
-
+import Coin from "./components/coinItem/Coin";
 function App() {
   const [coins, setCoins] = useState([]);
 
@@ -30,6 +30,9 @@ function App() {
             placeholder="Search Currency"
           ></input>
         </form>
+      </div>
+      <div className="coinsContainer">
+        <Coin />
       </div>
     </div>
   );
