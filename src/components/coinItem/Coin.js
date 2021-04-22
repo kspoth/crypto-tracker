@@ -11,18 +11,25 @@ const Coin = ({
 }) => {
   return (
     <div className="cryptoCoin">
-      <img
-        src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579"
-        alt="Bitcion"
-        className="coinLogo"
-      ></img>
+      <img src={image} alt={`${name}`} className="coinLogo" />
       <div className="coinNameWrap">
-        <h1 className="coinName">Bitcoin</h1>
-        <p className="coinSymbol">BTC</p>
+        <h1 className="coinName">{name}</h1>
+        <p className="coinSymbol">{symbol}</p>
       </div>
-      <p className="coinPrice">$60k</p>
-      <p className="coinMarketCap">Market Cap: $1,185,601,872,889</p>
-      <p className="coinVolume">Volume (24H): $69,024,951,198</p>
+      <p className="coinPrice">${price.toLocaleString()}</p>
+      <p className="coinMarketcap">Market Cap: ${marketcap.toLocaleString()}</p>
+      <p className="coinVolume">Volume (24H): ${volume.toLocaleString()}</p>
+      {priceChange < 0 ? (
+        <div className="priceContainerDOWN">
+          <i className="fas fa-angle-down fa-2x"></i>
+          <p className="priceChange">{priceChange.toFixed(2)}%</p>
+        </div>
+      ) : (
+        <div className="priceContainerUP">
+          <i className="fas fa-angle-up fa-2x"></i>
+          <p className="priceChange">{priceChange.toFixed(2)}%</p>
+        </div>
+      )}
     </div>
   );
 };
