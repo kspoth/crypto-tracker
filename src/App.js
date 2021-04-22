@@ -6,6 +6,7 @@ import Coin from "./components/coinItem/Coin";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
+
   useEffect(() => {
     axios
       .get(
@@ -23,14 +24,14 @@ function App() {
   };
 
   const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase)
+    coin.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div>
       <div className="header">
         <h1 className="brand">
-          <i className="fas fa-coins"></i>Crypto Tracker
+          <i className="fas fa-coins"></i> Crypto Tracker
         </h1>
         <form>
           <input
