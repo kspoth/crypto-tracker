@@ -38,7 +38,7 @@ class Saved extends Component {
             <Card title="Saved Coins" icon="fas fa-coins">
               {this.state.coins.length ? (
                 <List>
-                  {this.state.coins.map((book) => (
+                  {this.state.coins.map((coin) => (
                     <Coin
                       key={coin.id}
                       name={coin.name}
@@ -50,7 +50,7 @@ class Saved extends Component {
                       priceChange={coin.price_change_percentage_24h}
                       Button={() => (
                         <button
-                          onClick={() => this.handleCoinDelete(book._id)}
+                          onClick={() => this.handleCoinDelete(coin._id)}
                           className="btn btn-danger ml-2"
                         >
                           Delete

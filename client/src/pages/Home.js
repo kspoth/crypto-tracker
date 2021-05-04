@@ -76,7 +76,7 @@ class Home extends Component {
               <Card title="Available Cryptocurrencies">
                 {this.state.coins.length ? (
                   <List>
-                    {this.state.coins.map((book) => (
+                    {this.state.coins.map((coin) => (
                       <Coin
                         key={coin.id}
                         name={coin.name}
@@ -88,7 +88,7 @@ class Home extends Component {
                         priceChange={coin.price_change_percentage_24h}
                         Button={() => (
                           <button
-                            onClick={() => this.handleCoinSave(book.id)}
+                            onClick={() => this.handleCoinSave(coin.id)}
                             className="btn btn-primary ml-2"
                           >
                             Save

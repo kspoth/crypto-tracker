@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const coinController = require("../../controllers/bookController");
+const coinController = require("../../controllers/coinController");
 
 router.route("/").get(coinController.findAll).post(coinController.create);
 

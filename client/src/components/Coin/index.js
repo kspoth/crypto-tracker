@@ -22,7 +22,7 @@ function Coin({
             {key}
             {name}
           </h3>
-          {subtitle && <h5 className="font-italic">{price}</h5>}
+          {symbol && <h5 className="font-italic">{price}</h5>}
         </Col>
         <Col size="md-4">
           <div className="btn-container">
@@ -30,7 +30,7 @@ function Coin({
               className="btn btn-light"
               target="_blank"
               rel="noopener noreferrer"
-              href={link}
+              href={marketcap}
             >
               View
             </a>
