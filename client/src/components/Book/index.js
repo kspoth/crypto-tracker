@@ -3,13 +3,26 @@ import { ListItem } from "../List";
 import { Row, Col } from "../Grid";
 import "./style.css";
 
-function Book({ title, subtitle, authors, link, description, image, Button }) {
+function Coin({
+  key,
+  name,
+  price,
+  symbol,
+  marketcap,
+  volume,
+  image,
+  priceChange,
+  Button,
+}) {
   return (
     <ListItem>
       <Row className="flex-wrap-reverse">
         <Col size="md-8">
-          <h3 className="font-italic">{title}</h3>
-          {subtitle && <h5 className="font-italic">{subtitle}</h5>}
+          <h3 className="font-italic">
+            {key}
+            {name}
+          </h3>
+          {subtitle && <h5 className="font-italic">{price}</h5>}
         </Col>
         <Col size="md-4">
           <div className="btn-container">
@@ -27,7 +40,7 @@ function Book({ title, subtitle, authors, link, description, image, Button }) {
       </Row>
       <Row>
         <Col size="md-6">
-          <p className="font-italic small">Written by {authors}</p>
+          <p className="font-italic small">{symbol}</p>
         </Col>
       </Row>
       <Row>
@@ -35,15 +48,17 @@ function Book({ title, subtitle, authors, link, description, image, Button }) {
           <img
             className="img-thumbnail img-fluid w-100"
             src={image}
-            alt={title}
+            alt={name}
           />
         </Col>
         <Col size="12 sm-8 md-10">
-          <p>{description}</p>
+          <p>{marketcap}</p>
+          <p>{volume}</p>
+          <p>{priceChange}</p>
         </Col>
       </Row>
     </ListItem>
   );
 }
 
-export default Book;
+export default Coin;
