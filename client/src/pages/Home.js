@@ -9,7 +9,7 @@ import { List } from "../components/List";
 
 class Home extends Component {
   state = {
-    books: [],
+    coins: [],
     q: "",
     message: "Search for a currency to begin ",
   };
@@ -21,16 +21,16 @@ class Home extends Component {
     });
   };
 
-  getBooks = () => {
-    API.getBooks(this.state.q)
+  getCoins = () => {
+    API.getCoins(this.state.q)
       .then((res) =>
         this.setState({
-          books: res.data,
+          coins: res.data,
         })
       )
       .catch(() =>
         this.setState({
-          books: [],
+          coins: [],
           message: "No books found, try a different title.",
         })
       );
@@ -38,21 +38,22 @@ class Home extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    this.getBooks();
+    this.getCoins();
   };
 
-  handleBookSave = (id) => {
-    const book = this.state.books.find((book) => book.id === id);
+  handleCoinSave = (id) => {
+    const coin = this.state.coins.find((coin) => coin.id === id);
 
-    API.saveBook({
-      googleId: book.id,
-      title: book.volumeInfo.title,
-      subtitle: book.volumeInfo.subtitle,
-      link: book.volumeInfo.infoLink,
-      authors: book.volumeInfo.authors,
-      description: book.volumeInfo.description,
-      image: book.volumeInfo.imageLinks.thumbnail,
-    }).then(() => this.getBooks());
+    API.saveCoin({
+      coinId: coin.id,
+      title: coin.name,
+      price: coin.current_price,
+      symbol: coin.symbol,
+      marketcap: coin.market_cap,
+      volume: coin.total_volume,
+      image: coin.image,
+      priceChange: coin.price_change_percentage_24h,
+    }).then(() => this.getCoins());
   };
 
   render() {
@@ -73,20 +74,21 @@ class Home extends Component {
           <Row>
             <Col size="md-12">
               <Card title="Available Cryptocurrencies">
-                {this.state.books.length ? (
+                {this.state.coins.length ? (
                   <List>
-                    {this.state.books.map((book) => (
-                      <Book
-                        key={book.id}
-                        title={book.volumeInfo.title}
-                        subtitle={book.volumeInfo.subtitle}
-                        link={book.volumeInfo.infoLink}
-                        authors={book.volumeInfo.authors.join(", ")}
-                        description={book.volumeInfo.description}
-                        image={book.volumeInfo.imageLinks.thumbnail}
+                    {this.state.coins.map((book) => (
+                      <Coin
+                        key={coin.id}
+                        name={coin.name}
+                        price={coin.current_price}
+                        symbol={coin.symbol}
+                        marketcap={coin.market_cap}
+                        volume={coin.total_volume}
+                        image={coin.image}
+                        priceChange={coin.price_change_percentage_24h}
                         Button={() => (
                           <button
-                            onClick={() => this.handleBookSave(book.id)}
+                            onClick={() => this.handleCoinSave(book.id)}
                             className="btn btn-primary ml-2"
                           >
                             Save

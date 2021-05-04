@@ -8,25 +8,25 @@ import { List } from "../components/List";
 
 class Saved extends Component {
   state = {
-    books: [],
+    coins: [],
   };
 
   componentDidMount() {
-    this.getSavedBooks();
+    this.getSavedCoins();
   }
 
-  getSavedBooks = () => {
-    API.getSavedBooks()
+  getSavedCoins = () => {
+    API.getSavedCoins()
       .then((res) =>
         this.setState({
-          books: res.data,
+          coins: res.data,
         })
       )
       .catch((err) => console.log(err));
   };
 
-  handleBookDelete = (id) => {
-    API.deleteBook(id).then((res) => this.getSavedBooks());
+  handleCoinDelete = (id) => {
+    API.deleteCoin(id).then((res) => this.getSavedCoins());
   };
 
   render() {
@@ -36,20 +36,21 @@ class Saved extends Component {
         <Row>
           <Col size="md-12">
             <Card title="Saved Coins" icon="fas fa-coins">
-              {this.state.books.length ? (
+              {this.state.coins.length ? (
                 <List>
-                  {this.state.books.map((book) => (
-                    <Book
-                      key={book._id}
-                      title={book.title}
-                      subtitle={book.subtitle}
-                      link={book.link}
-                      authors={book.authors.join(", ")}
-                      description={book.description}
-                      image={book.image}
+                  {this.state.coins.map((book) => (
+                    <Coin
+                      key={coin.id}
+                      name={coin.name}
+                      price={coin.current_price}
+                      symbol={coin.symbol}
+                      marketcap={coin.market_cap}
+                      volume={coin.total_volume}
+                      image={coin.image}
+                      priceChange={coin.price_change_percentage_24h}
                       Button={() => (
                         <button
-                          onClick={() => this.handleBookDelete(book._id)}
+                          onClick={() => this.handleCoinDelete(book._id)}
                           className="btn btn-danger ml-2"
                         >
                           Delete

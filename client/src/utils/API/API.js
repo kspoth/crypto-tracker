@@ -2,18 +2,18 @@ import axios from "axios";
 
 export default {
   getBooks: function (q) {
-    return axios.get("/api/google", { params: { q: "title:" + q } });
+    return axios.get("/api/coingecko", { params: { q: "title:" + q } });
   },
 
   getSavedBooks: function () {
-    return axios.get("/api/books");
+    return axios.get("/api/coins");
   },
 
   deleteBook: function (id) {
-    return axios.delete("/api/books/" + id);
+    return axios.delete("/api/coins/" + id);
   },
 
-  saveBook: function (bookData) {
-    return axios.post("/api/books", bookData);
+  saveBook: function (coinData) {
+    return axios.post("/api/coinss", coinData);
   },
 };
