@@ -1,11 +1,11 @@
 const path = require("path");
 const router = require("express").Router();
-const bookRoutes = require("./books");
-const googleRoutes = require("./google");
+const coinRoutes = require("./coins");
+const cryptoRoutes = require("./crypto");
 
-router.use("/books", bookRoutes);
+router.use("/coins", coinRoutes);
 
-router.use("/google", googleRoutes);
+router.use("/crypto", cryptoRoutes);
 
 router.use(function (req, res) {
   res.sendFile(path.join(__dirname, "../../client/build/index.html"));

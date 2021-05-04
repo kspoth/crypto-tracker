@@ -16,7 +16,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 const mongodb =
-  "mongodb://kspoth08:Scooter%231@cluster0.mlab.com:googlebooks/heroku_protected-fjord-81375";
+  "mongodb+srv://<kspoth08>:<Scooter%231>@cluster0.lpwr4.mongodb.net/crypto?retryWrites=true&w=majority";
+
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || mongodb, {
   useNewUrlParser: true,
