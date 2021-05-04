@@ -1,12 +1,17 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css";
 const axios = require("axios");
 const db = require("../models");
 
 module.exports = {
   findAll: function (req, res) {
     const { query: params } = req;
+
     axios
       .get(
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
+
         {
           params,
         }
@@ -17,7 +22,7 @@ module.exports = {
             result.volumeInfo.name &&
             result.volumeInfo.price &&
             result.volumeInfo.symbol &&
-            result.volumeInfo.marketCap &&
+            result.volumeInfo.market_cap &&
             result.volumeInfo.imageLinks &&
             result.volumeInfo.imageLinks.thumbnail
         )
