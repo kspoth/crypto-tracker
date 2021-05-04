@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
 import Form from "../components/Form";
-import Book from "../components/Book";
+import Book from "../components/Coin";
 import Footer from "../components/Footer";
 import API from "../utils/API/API";
 import { Col, Row, Container } from "../components/Grid";
