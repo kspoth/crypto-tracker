@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
 import Form from "../components/Form";
-import Book from "../components/Coin";
+import Coin from "../components/Coin";
 import Footer from "../components/Footer";
 import API from "../utils/API/API";
 import { Col, Row, Container } from "../components/Grid";
@@ -31,7 +31,7 @@ class Home extends Component {
       .catch(() =>
         this.setState({
           coins: [],
-          message: "No books found, try a different title.",
+          message: "No coins found, try a different title.",
         })
       );
   };

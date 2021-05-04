@@ -2,13 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const cryptoSchema = new Schema({
-  title: { type: String, required: true },
-  subtitle: { type: String },
-  authors: { type: [String], required: true },
-  link: { type: String, required: true },
-  description: { type: String, required: true },
+  key: { type: String, required: true },
+  name: { type: String, required: true },
+  price: { type: String },
+  symbol: { type: [String], required: true },
+  marketCap: { type: String, required: true },
+  volume: { type: String, required: true },
   image: { type: String, required: true },
-  googleId: { type: String, required: true, unique: true },
+  priceChange: { type: String, required: true, unique: true },
 });
 
 const crypto = mongoose.model("crypto", cryptoSchema);

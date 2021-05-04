@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
-import Book from "../components/Coin";
+import Coin from "../components/Coin";
 import Footer from "../components/Footer";
 import API from "../utils/API/API";
 import { Col, Row, Container } from "../components/Grid";

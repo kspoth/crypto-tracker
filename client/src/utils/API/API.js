@@ -1,19 +1,19 @@
 import axios from "axios";
 
 export default {
-  getBooks: function (q) {
+  getCoins: function (q) {
     return axios.get("/api/coingecko", { params: { q: "title:" + q } });
   },
 
-  getSavedBooks: function () {
+  getSavedCoins: function () {
     return axios.get("/api/coins");
   },
 
-  deleteBook: function (id) {
+  deleteCoin: function (id) {
     return axios.delete("/api/coins/" + id);
   },
 
-  saveBook: function (coinData) {
+  saveCoin: function (coinData) {
     return axios.post("/api/coinss", coinData);
   },
 };

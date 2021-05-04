@@ -14,18 +14,20 @@ module.exports = {
       .then((results) =>
         results.data.items.filter(
           (result) =>
-            result.volumeInfo.title &&
-            result.volumeInfo.infoLink &&
-            result.volumeInfo.authors &&
-            result.volumeInfo.description &&
+            result.volumeInfo.name &&
+            result.volumeInfo.price &&
+            result.volumeInfo.symbol &&
+            result.volumeInfo.marketCap &&
             result.volumeInfo.imageLinks &&
             result.volumeInfo.imageLinks.thumbnail
         )
       )
       .then((apiCoins) =>
-        db.Book.find().then((dbCoins) =>
-          apiBooks.filter((apiCoin) =>
-            dbBooks.every((dbCoin) => dbBook.googleId.toString() !== apiCoin.id)
+        db.Coin.find().then((dbCoins) =>
+          apiCoins.filter((apiCoin) =>
+            dbCoins.every(
+              (dbCoin) => dbCoin.coingeckoId.toString() !== apiCoin.id
+            )
           )
         )
       )
