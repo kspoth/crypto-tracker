@@ -1,6 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import "./App.css";
 const axios = require("axios");
 const db = require("../models");
 
