@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Coin from "./components/coinItem/Coin";
+import Navbar from "./components/coinItem/Navbar";
 
 function App() {
   const [coins, setCoins] = useState([]);
