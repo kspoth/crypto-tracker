@@ -9,12 +9,14 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/saved" component={Saved} />
-          <Route component={NoMatch} />
-        </Switch>
+        <div style={{ backgroundColor: "#1a1a1c" }}>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/saved" component={Saved} />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
       </div>
     </Router>
   );

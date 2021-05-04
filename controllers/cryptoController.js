@@ -5,9 +5,12 @@ module.exports = {
   findAll: function (req, res) {
     const { query: params } = req;
     axios
-      .get("https://www.googleapis.com/books/v1/volumes", {
-        params,
-      })
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
+        {
+          params,
+        }
+      )
       .then((results) =>
         results.data.items.filter(
           (result) =>
@@ -19,14 +22,14 @@ module.exports = {
             result.volumeInfo.imageLinks.thumbnail
         )
       )
-      .then((apiBooks) =>
-        db.Book.find().then((dbBooks) =>
-          apiBooks.filter((apiBook) =>
-            dbBooks.every((dbBook) => dbBook.googleId.toString() !== apiBook.id)
+      .then((apiCoins) =>
+        db.Book.find().then((dbCoins) =>
+          apiBooks.filter((apiCoin) =>
+            dbBooks.every((dbCoin) => dbBook.googleId.toString() !== apiCoin.id)
           )
         )
       )
-      .then((books) => res.json(books))
+      .then((coins) => res.json(coins))
       .catch((err) => res.status(422).json(err));
   },
 };
