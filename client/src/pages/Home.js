@@ -1,113 +1,69 @@
 import React, { Component } from "react";
+import axios from "axios";
 import Card from "../components/Card";
-import Form from "../components/Form";
-import Coin from "../components/Coin";
-import Footer from "../components/Footer";
-import API from "../utils/API/API";
-import { Col, Row, Container } from "../components/Grid";
-import { List } from "../components/List";
+import { useEffect, useState } from "react";
+import Coin from "../components/coinItem/Coin";
 
-class Home extends Component {
-  state = {
-    coins: [],
-    q: "",
-    message: "Search for a currency to begin ",
-  };
+function App() {
+  const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState("");
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  getCoins = () => {
-    API.getCoins(this.state.q)
-      .then((res) =>
-        this.setState({
-          coins: res.data,
-        })
+  useEffect(() => {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
       )
-      .catch(() =>
-        this.setState({
-          coins: [],
-          message: "No coins found, try a different title.",
-        })
-      );
+      .then((res) => {
+        setCoins(res.data);
+        console.log(res.data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
   };
 
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    this.getCoins();
-  };
+  const filteredCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase())
+  );
 
-  handleCoinSave = (id) => {
-    const coin = this.state.coins.find((coin) => coin.id === id);
-
-    API.saveCoin({
-      coinId: coin.id,
-      title: coin.name,
-      price: coin.current_price,
-      symbol: coin.symbol,
-      marketcap: coin.market_cap,
-      volume: coin.total_volume,
-      image: coin.image,
-      priceChange: coin.price_change_percentage_24h,
-    }).then(() => this.getCoins());
-  };
-
-  render() {
-    return (
-      <Container>
-        <div style={{ backgroundColor: "#1a1a1c" }}>
-          <Row>
-            <Col size="md-12">
-              <Card title="Coin Search" icon="fas fa-coins">
-                <Form
-                  handleInputChange={this.handleInputChange}
-                  handleFormSubmit={this.handleFormSubmit}
-                  q={this.state.q}
-                />
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col size="md-12">
-              <Card title="Available Cryptocurrencies">
-                {this.state.coins.length ? (
-                  <List>
-                    {this.state.coins.map((coin) => (
-                      <Coin
-                        key={coin.id}
-                        name={coin.name}
-                        price={coin.current_price}
-                        symbol={coin.symbol}
-                        marketcap={coin.market_cap}
-                        volume={coin.total_volume}
-                        image={coin.image}
-                        priceChange={coin.price_change_percentage_24h}
-                        Button={() => (
-                          <button
-                            onClick={() => this.handleCoinSave(coin.id)}
-                            className="btn btn-primary ml-2"
-                          >
-                            Save
-                          </button>
-                        )}
-                      />
-                    ))}
-                  </List>
-                ) : (
-                  <h2 className="text-center">{this.state.message}</h2>
-                )}
-              </Card>
-            </Col>
-          </Row>
-          <Footer />
+  return (
+    <Card>
+      <div>
+        <div className="header">
+          <h1 className="brand">
+            <form>
+              <input
+                className="inputField"
+                type="text"
+                onChange={handleChange}
+                placeholder="Search a Coin"
+              />
+            </form>
+          </h1>
         </div>
-      </Container>
-    );
-  }
+        <div className="coinsContainer">
+          {filteredCoins.map((coin) => {
+            return (
+              <Coin
+                key={coin.id}
+                id={coin.id}
+                name={coin.name}
+                price={coin.current_price}
+                symbol={coin.symbol}
+                marketcap={coin.market_cap}
+                volume={coin.total_volume}
+                image={coin.image}
+                priceChange={coin.price_change_percentage_24h}
+                saved={false}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </Card>
+  );
 }
 
-export default Home;
+export default App;

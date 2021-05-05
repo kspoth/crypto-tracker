@@ -14,6 +14,6 @@ export default {
   },
 
   saveCoin: function (coinData) {
-    return axios.post("/api/coinss", coinData);
+    return axios.post("/api/coins", coinData);
   },
 };

@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const cryptoSchema = new Schema({
+const CoinSchema = new Schema({
   key: { type: String, required: true },
   name: { type: String, required: true },
-  price: { type: String },
-  symbol: { type: [String], required: true },
-  market_cap: { type: String, required: true },
-  volume: { type: String, required: true },
+  price: { type: Number },
+  symbol: { type: String, required: true },
+  market_cap: { type: Number, required: true },
+  volume: { type: Number, required: true },
   image: { type: String, required: true },
-  priceChange: { type: String, required: true, unique: true },
+  priceChange: { type: Number, required: true },
 });
 
-const crypto = mongoose.model("crypto", cryptoSchema);
+const Coin = mongoose.model("Coin", CoinSchema);
 
-module.exports = crypto;
+module.exports = Coin;

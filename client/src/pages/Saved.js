@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
-import Coin from "../components/Coin";
+import Coin from "../components/coinItem/Coin";
 import Footer from "../components/Footer";
 import API from "../utils/API/API";
 import { Col, Row, Container } from "../components/Grid";
@@ -39,24 +39,26 @@ class Saved extends Component {
               {this.state.coins.length ? (
                 <List>
                   {this.state.coins.map((coin) => (
-                    <Coin
-                      key={coin.id}
-                      name={coin.name}
-                      price={coin.current_price}
-                      symbol={coin.symbol}
-                      marketcap={coin.market_cap}
-                      volume={coin.total_volume}
-                      image={coin.image}
-                      priceChange={coin.price_change_percentage_24h}
-                      Button={() => (
-                        <button
-                          onClick={() => this.handleCoinDelete(coin._id)}
-                          className="btn btn-danger ml-2"
-                        >
-                          Delete
-                        </button>
-                      )}
-                    />
+                    <div>
+                      <Coin
+                        key={coin._id}
+                        name={coin.name}
+                        price={coin.price}
+                        symbol={coin.symbol}
+                        marketcap={coin.market_cap}
+                        volume={coin.volume}
+                        image={coin.image}
+                        priceChange={coin.priceChange}
+                        saved={true}
+                      />
+
+                      <button
+                        onClick={() => this.handleCoinDelete(coin._id)}
+                        className="btn btn-danger ml-2"
+                      >
+                        Delete
+                      </button>
+                    </div>
                   ))}
                 </List>
               ) : (

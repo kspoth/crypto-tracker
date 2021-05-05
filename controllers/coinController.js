@@ -12,6 +12,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
+    console.log(req.body);
     db.Coin.create(req.body)
       .then((dbCoin) => res.json(dbCoin))
       .catch((err) => res.status(422).json(err));

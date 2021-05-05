@@ -16,15 +16,24 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 const mongodb =
-  "mongodb+srv://<kspoth08>:<Scooter%231>@cluster0.lpwr4.mongodb.net/crypto?retryWrites=true&w=majority";
+  // "mongodb+srv://kspoth08:Scooter%231@cluster0.lpwr4.mongodb.net/crypto?retryWrites=true&w=majority";
+  // mongodb+srv://<username>:<password>@cluster0.lpwr4.mongodb.net/myFirstDatabase?retryW"rites=true&w=majority
+  "mongodb+srv://kspoth08:Scooter%231@budget.svtlf.mongodb.net/crypto?retryWrites=true&w=majority";
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || mongodb, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose
+  .connect(mongodb, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
+  .then(function () {
+    console.log("MongoDB Connected");
+  })
+  .catch(function () {
+    console.log("MongoDB not connected");
+  });
 
 // Start the API server
 app.listen(PORT, () =>
