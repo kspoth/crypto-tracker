@@ -113,12 +113,7 @@
 svg {
   background-color: transparent;
 }
-.fas fa-angle-down fa-2x {
-  background-color: transparent;
-}
-.fas fa-angle-up fa-2x {
-  background-color: transparent;
-}
+
 .priceChange {
   background-color: transparent;
   padding-left: 10px;
@@ -142,3 +137,4 @@ svg {
   padding-bottom: 8px;
   background-color: transparent;
 }
+

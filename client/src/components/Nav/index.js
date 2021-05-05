@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-
+import "../../App.css";
+import "../../index.css";
 class Nav extends Component {
   state = {
     open: false,
@@ -32,8 +33,12 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg mb-2">
-        <Link className="fas fa-coins" to="/">
+      <nav className="navbar">
+        <Link
+          className="fas fa-coins"
+          style={{ color: "white", fontSize: "30px" }}
+          to="/"
+        >
           Crypto-Tracker
         </Link>
         <button
@@ -63,6 +68,11 @@ class Nav extends Component {
                       ? "nav-link active"
                       : "nav-link"
                   }
+                  style={{
+                    color: "white",
+                    fontSize: "20px",
+                    textAlign: "relative",
+                  }}
                   to="/saved"
                 >
                   My Saved Coins
@@ -76,6 +86,11 @@ class Nav extends Component {
                       ? "nav-link active"
                       : "nav-link"
                   }
+                  style={{
+                    color: "white",
+                    fontSize: "20px",
+                    textAlign: "relative",
+                  }}
                   to="/saved"
                 >
                   Log out

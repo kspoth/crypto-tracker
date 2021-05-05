@@ -41,15 +41,33 @@ const Coin = ({
       <p className="coinPrice">${price.toLocaleString()}</p>
       <p className="coinMarketcap">Market Cap: ${marketcap.toLocaleString()}</p>
       <p className="coinVolume">Volume (24H): ${volume.toLocaleString()}</p>
-      {saved == false && <button onClick={onSaveCoin}>save</button>}
+      {saved == false && (
+        <button
+          onClick={onSaveCoin}
+          style={{
+            backgroundColor: "dodgerblue",
+            width: "175px",
+            height: "33px",
+            fontSize: "1rem",
+          }}
+        >
+          Save Coin
+        </button>
+      )}
       {priceChange < 0 ? (
         <div className="priceContainerDOWN">
-          <i className="fas fa-angle-down fa-2x"></i>
+          <i
+            className="fas fa-angle-down fa-2x"
+            style={{ backgroundColor: "transparent" }}
+          ></i>
           <p className="priceChange">{priceChange.toFixed(2)}%</p>
         </div>
       ) : (
         <div className="priceContainerUP">
-          <i className="fas fa-angle-up fa-2x"></i>
+          <i
+            className="fas fa-angle-up fa-2x"
+            style={{ backgroundColor: "transparent" }}
+          ></i>
           <p className="priceChange">{priceChange.toFixed(2)}%</p>
         </div>
       )}
