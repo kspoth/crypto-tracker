@@ -54,7 +54,12 @@ class Saved extends Component {
 
                       <button
                         onClick={() => this.handleCoinDelete(coin._id)}
-                        className="btn btn-danger ml-2"
+                        style={{
+                          backgroundColor: "tomato",
+                          width: "175px",
+                          height: "33px",
+                          fontSize: "1rem",
+                        }}
                       >
                         Delete
                       </button>
