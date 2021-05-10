@@ -32,11 +32,20 @@ const Coin = ({
       .catch((error) => console.error(error));
   };
   return (
-    <div className="cryptoCoin">
-      <img src={image} alt={`${name}`} className="coinLogo" />
-      <div className="coinNameWrap">
-        <h1 className="coinName">{name}</h1>
-        <p className="coinSymbol">{symbol}</p>
+    <div className="cryptoCoin" style={{ backgroundColor: "grey" }}>
+      <img
+        src={image}
+        alt={`${name}`}
+        className="coinLogo"
+        style={{ backgroundColor: "transparent" }}
+      />
+      <div className="coinNameWrap" style={{ backgroundColor: "transparent" }}>
+        <h1 className="coinName" style={{ backgroundColor: "transparent" }}>
+          {name}
+        </h1>
+        <p className="coinSymbol" style={{ backgroundColor: "transparent" }}>
+          {symbol}
+        </p>
       </div>
       <p className="coinPrice">${price.toLocaleString()}</p>
       <p className="coinMarketcap">Market Cap: ${marketcap.toLocaleString()}</p>
