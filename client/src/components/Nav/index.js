@@ -33,7 +33,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-sm bg-light">
+      <nav className="navbar navbar-expand-sm bg-black">
         <div class="container-fluid">
           <div class="navbar-header">
             <Link
