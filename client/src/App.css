@@ -138,3 +138,6 @@ svg {
   background-color: transparent;
 }
 
+.navbar-nav>li {
+  float: left;
+}

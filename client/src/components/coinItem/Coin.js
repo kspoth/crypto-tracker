@@ -11,6 +11,7 @@ const Coin = ({
   volume,
   image,
   priceChange,
+  handleCoinDelete,
   saved,
 }) => {
   const onSaveCoin = () => {
@@ -30,6 +31,10 @@ const Coin = ({
         console.log(res.data);
       })
       .catch((error) => console.error(error));
+  };
+
+  const onDeleteCoin = () => {
+    handleCoinDelete(id);
   };
   return (
     <div className="cryptoCoin" style={{ backgroundColor: "grey" }}>
@@ -61,6 +66,19 @@ const Coin = ({
           }}
         >
           Save Coin
+        </button>
+      )}
+      {saved == true && (
+        <button
+          onClick={onDeleteCoin}
+          style={{
+            backgroundColor: "tomato",
+            width: "175px",
+            height: "33px",
+            fontSize: "1rem",
+          }}
+        >
+          Delete
         </button>
       )}
       {priceChange < 0 ? (

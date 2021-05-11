@@ -31,41 +31,28 @@ class Saved extends Component {
 
   render() {
     return (
-      <Container>
-        <Row></Row>
+      <div>
         <Row>
           <Col size="md-12">
             <Card title="Saved Coins" icon="fas fa-coins">
               {this.state.coins.length ? (
-                <List>
-                  {this.state.coins.map((coin) => (
-                    <div>
-                      <Coin
-                        key={coin._id}
-                        name={coin.name}
-                        price={coin.price}
-                        symbol={coin.symbol}
-                        marketcap={coin.market_cap}
-                        volume={coin.volume}
-                        image={coin.image}
-                        priceChange={coin.priceChange}
-                        saved={true}
-                      />
-
-                      <button
-                        onClick={() => this.handleCoinDelete(coin._id)}
-                        style={{
-                          backgroundColor: "tomato",
-                          width: "175px",
-                          height: "33px",
-                          fontSize: "1rem",
-                        }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  ))}
-                </List>
+                this.state.coins.map((coin) => (
+                  <div style={{ display: "inline-block" }}>
+                    <Coin
+                      key={coin._id}
+                      id={coin._id}
+                      name={coin.name}
+                      price={coin.price}
+                      symbol={coin.symbol}
+                      marketcap={coin.market_cap}
+                      volume={coin.volume}
+                      image={coin.image}
+                      priceChange={coin.priceChange}
+                      handleCoinDelete={this.handleCoinDelete}
+                      saved={true}
+                    />
+                  </div>
+                ))
               ) : (
                 <h2 className="text-center">No Saved Coins</h2>
               )}
@@ -73,7 +60,7 @@ class Saved extends Component {
           </Col>
         </Row>
         <Footer />
-      </Container>
+      </div>
     );
   }
 }

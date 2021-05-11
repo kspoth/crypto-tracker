@@ -33,16 +33,19 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar">
-        <Link
-          className="fas fa-coins"
-          style={{ color: "white", fontSize: "30px" }}
-          to="/"
-        >
-          Crypto-Tracker
-        </Link>
-        <div className="header">
-          <ul className="navbar-nav">
+      <nav className="navbar navbar-expand-sm bg-light">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <Link
+              className="fas fa-coins"
+              style={{ color: "white", fontSize: "30px" }}
+              to="/"
+            >
+              Crypto-Tracker
+            </Link>
+          </div>
+
+          <ul className="nav navbar-nav">
             <li className="nav-item"></li>
             <li className="nav-item" id="left">
               <Link
