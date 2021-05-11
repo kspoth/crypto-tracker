@@ -59,6 +59,7 @@ class Saved extends Component {
                           width: "175px",
                           height: "33px",
                           fontSize: "1rem",
+                          alignItems: "center",
                         }}
                       >
                         Delete

@@ -39,6 +39,9 @@ function App() {
                 type="text"
                 onChange={handleChange}
                 placeholder="Search a Coin"
+                style={{
+                  backgroundColor: "LightGrey",
+                }}
               />
             </form>
           </h1>

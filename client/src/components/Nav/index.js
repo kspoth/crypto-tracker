@@ -41,63 +41,48 @@ class Nav extends Component {
         >
           Crypto-Tracker
         </Link>
-        <button
-          onClick={this.toggleNav}
-          className="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
         <div className="header">
-          <div
-            className={`${this.state.open ? "" : "collapse "}navbar-collapse`}
-            id="navbarNav"
-          >
-            <ul className="navbar-nav">
-              <li className="nav-item"></li>
-              <li className="nav-item">
-                <Link
-                  onClick={this.toggleNav}
-                  className={
-                    window.location.pathname === "/saved"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  style={{
-                    color: "white",
-                    fontSize: "20px",
-                    textAlign: "relative",
-                  }}
-                  to="/saved"
-                >
-                  My Saved Coins
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  onClick={this.toggleNav}
-                  className={
-                    window.location.pathname === "/saved"
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
-                  style={{
-                    color: "white",
-                    fontSize: "20px",
-                    textAlign: "relative",
-                  }}
-                  to="/saved"
-                >
-                  Log out
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <ul className="navbar-nav">
+            <li className="nav-item"></li>
+            <li className="nav-item" id="left">
+              <Link
+                onClick={this.toggleNav}
+                className={
+                  window.location.pathname === "/saved"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                style={{
+                  color: "white",
+                  fontSize: "20px",
+                  display: "inline-block",
+                  textAlign: "center",
+                }}
+                to="/saved"
+              >
+                My Saved Coins
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                onClick={this.toggleNav}
+                className={
+                  window.location.pathname === "/saved"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                style={{
+                  color: "white",
+                  fontSize: "20px",
+                  textAlign: "relative",
+                  display: "inline-block",
+                }}
+                to="/saved"
+              >
+                Log out
+              </Link>
+            </li>
+          </ul>
         </div>
       </nav>
     );
